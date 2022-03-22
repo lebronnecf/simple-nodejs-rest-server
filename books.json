@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "title": "Les Misérables",
+        "author": "Victor Hugo"
+    },
+    {
+        "id": 2,
+        "title": "Les Bienveillantes",
+        "author": "Jonathan Littell"
+    },
+    {
+        "id": 3,
+        "title": "Notre-Dame de Paris",
+        "author": "Victor Hugo"
+    },
+    {
+        "id": 4,
+        "title": "Le Capital",
+        "author": "Karl Marx"
+    },
+    {
+        "id": 5,
+        "title": "Caligula",
+        "author": "Albert Camus"
+    },
+    {
+        "id": 6,
+        "title": "L'étranger",
+        "author": "Albert Camus"
+    }
+]
