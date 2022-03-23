@@ -61,17 +61,26 @@ app.post('/books', (req,res) => {
 
 app.put('/books/:id', (req,res) => {
     const id = parseInt(req.params.id)
-    if (isNaN(id)) {
-        res.status(400).send('An id must be an integer')
-        return
-    }
-    const book = findById(books, id)
-    if (book === undefined) { res.status(404).send('No book with this id: ' + id) }
-    else if (req.body.author === undefined || req.body.title === undefined) { res.status(400).send("A book must have a title and an author")} 
+    if (isNaN(id)) { res.status(400).send("You must provide an integer 'id'") } 
     else {
-        book.title = req.body.title
-        book.author = req.body.author
-        res.status(200).json(book)
+        const book = findById(books, id)
+        if (book === undefined) { res.status(404).send('No book with this id: ' + id) }
+        else if (req.body.author === undefined || req.body.title === undefined) { res.status(400).send("A book must have a title and an author")} 
+        else {
+            book.title = req.body.title
+            book.author = req.body.author
+            res.status(200).json(book)
+        }
+    }
+})
+
+app.delete('books/:id', (req, res) => {
+    const id = parseInt(req.params.id)
+    if (isNaN(id)) { res.status(400).send('An id must be an integer') } 
+    else if (findById(books, id) === undefined) { res.status(404).send('No book with this id: ' + id) }
+    else {
+        books = books.filter(b => b.id !== id)
+        res.status(200).json(books)
     }
 })
 
