@@ -10,7 +10,7 @@ app.use(bodyParser.json())
 
 const defaultPort = 8080
 
-const books = require('./books.json')
+var books = require('./books.json')
 
 app.get('/books', (req,res) => {
     const author = req.query.author
@@ -74,7 +74,8 @@ app.put('/books/:id', (req,res) => {
     }
 })
 
-app.delete('books/:id', (req, res) => {
+app.delete('/books/:id', (req, res) => {
+    console.log('delete ' + req.params.id)
     const id = parseInt(req.params.id)
     if (isNaN(id)) { res.status(400).send('An id must be an integer') } 
     else if (findById(books, id) === undefined) { res.status(404).send('No book with this id: ' + id) }
